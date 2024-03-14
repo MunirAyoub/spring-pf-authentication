@@ -1,29 +1,27 @@
 package br.com.fiap.springpfauthentication.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import jakarta.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "TB_2TDSPF_SISTEMA")
+@Table(name = "2TDSPF_TB_SISTEMA")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Sistema {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SISTEMA")
     @SequenceGenerator(
             name = "SQ_SISTEMA",
             sequenceName = "SQ_SISTEMA",
-            initialValue = 1,
-            allocationSize = 1
+            allocationSize = 1,
+            initialValue = 1
     )
     @Column(name = "ID_SISTEMA")
     private long id;
@@ -39,20 +37,16 @@ public class Sistema {
             name = "TB_2TDSPF_RESPONSAVEIS",
             joinColumns = {
                     @JoinColumn(
-                            name = "TB_2TDSPF_SISTEMA",
+                            name = "ID_SISTEMA",
                             referencedColumnName = "ID_SISTEMA",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_ID_SISTEMA"
-                            )
+                            foreignKey = @ForeignKey(name = "FK_ID_SISTEMA")
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn(
-                            name = "TB_2TDSPF_USUARIO",
+                            name = "ID_USUARIO",
                             referencedColumnName = "ID_USUARIO",
-                            foreignKey = @ForeignKey(
-                                    name = "FK_ID_USUARIO"
-                            )
+                            foreignKey = @ForeignKey(name = "FK_ID_USUARIO")
                     )
             }
     )
